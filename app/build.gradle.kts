@@ -72,7 +72,6 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.hilt.navigation.compose)
     implementation(libs.square.moshi.kotlin)
-    implementation(libs.square.okhttp.logging.interceptor)
     implementation(libs.square.retrofit)
     implementation(libs.square.retrofit.converter.moshi)
 
@@ -80,6 +79,7 @@ dependencies {
     debugImplementation(libs.compose.ui.test.manifest)
     debugImplementation(libs.compose.ui.tooling)
     debugImplementation(libs.square.leakcanary)
+    debugImplementation(libs.square.okhttp.logging.interceptor)
 
     annotationProcessor(libs.androidx.room.compiler)
 
