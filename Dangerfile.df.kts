@@ -29,15 +29,20 @@ danger(args) {
         }
 
         val updatesFile = File("build/dependencyUpdates/report.txt")
-        val lines = updatesFile.readLines()
 
-        val headerIndex = lines.indexOfFirst { line ->
-            line.contains("The following dependencies have later milestone versions:")
-        }
+        if (updatesFile.exists()) {
+            val lines = updatesFile.readLines()
 
-        if (headerIndex >= 0) {
-            val message = lines.subList(headerIndex, lines.size).joinToString("\n")
-            message(message)
+            val headerIndex = lines.indexOfFirst { line ->
+                line.contains("The following dependencies have later milestone versions:")
+            }
+
+            if (headerIndex >= 0) {
+                val message = lines.subList(headerIndex, lines.size).joinToString("\n")
+                message(message)
+            }
+        } else {
+            warn("Dependency updates report not found.")
         }
     }
 }
