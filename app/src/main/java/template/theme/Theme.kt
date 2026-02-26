@@ -21,11 +21,23 @@ private val lightColorScheme = lightColorScheme(
     secondary = Teal200,
 )
 
+/**
+ * Main theme composable for the app.
+ *
+ * @param darkTheme Whether to use the dark color scheme. Defaults to the system setting.
+ * @param dynamicTheme Whether to use dynamic color (Material You). Defaults to `false` for
+ *   deterministic behavior in screenshot and Paparazzi tests. Callers that want dynamic color
+ *   on supported devices (API 31+) should pass `dynamicTheme = true` explicitly, e.g.:
+ *   
+ *   TemplateTheme(dynamicTheme = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) { … }
+ *   ```
+ * @param content The composable content to be themed.
+ */
 @Composable
 @TargetApi(Build.VERSION_CODES.S)
 fun TemplateTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    dynamicTheme: Boolean = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S,
+    dynamicTheme: Boolean = false,
     content: @Composable () -> Unit,
 ) {
     val colorScheme = when {
